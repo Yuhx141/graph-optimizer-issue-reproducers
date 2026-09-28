@@ -1,0 +1,11 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 13],
+   producer_name: "graphopt-source-rule-cases"
+>
+"reshape-chain-zero" (float[2,3] X) => (float[3,2] Y) 
+   <int64[2] S1 =  {3,2}, int64[2] S2 =  {0,-1}, float[3,2] R>
+{
+   R = Reshape (X, S1)
+   Y = Reshape (R, S2)
+}

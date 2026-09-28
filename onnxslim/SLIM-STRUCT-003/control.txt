@@ -1,0 +1,11 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 13],
+   producer_name: "graphopt-source-rule-cases"
+>
+"slice-disjoint" (float[4,4] X) => (float[3,2] Y) 
+   <int64[1] B0 =  {1}, int64[1] E0 =  {4}, int64[1] A0 =  {0}, int64[1] B1 =  {1}, int64[1] E1 =  {3}, int64[1] A1 =  {-1}, int64[1] P =  {1}, float[3,4] S>
+{
+   S = Slice (X, B0, E0, A0, P)
+   Y = Slice (S, B1, E1, A1, P)
+}

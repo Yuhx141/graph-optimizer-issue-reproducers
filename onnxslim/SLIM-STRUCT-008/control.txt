@@ -1,0 +1,10 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 13],
+   producer_name: "graphopt-upstream-issue-pack"
+>
+"slim-slice-1-8" (float[1,6,10,10] X) => (float[1,6,7,10] Y) 
+   <int64[1] starts =  {1}, int64[1] ends =  {8}, int64[1] axes =  {2}, int64[1] steps =  {1}>
+{
+   Y = Slice (X, starts, ends, axes, steps)
+}

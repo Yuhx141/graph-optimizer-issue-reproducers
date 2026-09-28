@@ -1,0 +1,20 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 13, "case.local" : 1],
+   producer_name: "graphopt-source-rule-cases"
+>
+"cse-distinct-domains" (float[1] X, float[1] Z) => (float[1] Y) 
+   <float[1] A, float[1] B>
+{
+   A = Add (X, Z)
+   B = case.local.Add (X, Z)
+   Y = Sub (A, B)
+}
+<
+  domain: "case.local",
+  opset_import: ["" : 13]
+>
+Add (A, B) => (C)
+{
+   C = Sub (A, B)
+}

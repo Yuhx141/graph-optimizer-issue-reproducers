@@ -1,0 +1,11 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 13],
+   producer_name: "graphopt-upstream-issue-pack"
+>
+"slim-transpose-overlap" (float[2,3] X) => (float[3,2] A) {
+   Y = Transpose <perm: ints = [1, 0]> (X)
+   Z = Transpose <perm: ints = [1, 0]> (Y)
+   D = Transpose <perm: ints = [1, 0]> (Y)
+   A = Transpose <perm: ints = [1, 0]> (Z)
+}

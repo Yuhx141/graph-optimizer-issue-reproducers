@@ -1,0 +1,12 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 13],
+   producer_name: "graphopt-source-rule-cases"
+>
+"gemm-add-beta1-bias" (float[1,2] X) => (float[2] Y) 
+   <float[2,2] W =  {1,0,0,2}, int64[1] S =  {2}, float[2] D =  {5,7}, float[2] C =  {3,4}, float[1,2] G, float[2] R>
+{
+   G = Gemm <beta: float = 1, transB: int = 1> (X, W, C)
+   R = Reshape (G, S)
+   Y = Add (R, D)
+}

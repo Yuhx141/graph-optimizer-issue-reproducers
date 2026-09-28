@@ -1,0 +1,11 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 13],
+   producer_name: "graphopt-source-rule-cases"
+>
+"pad-maxpool-indices" (float[1,1,2] X) => (float[1,1,2] Y, int64[1,1,2] I) 
+   <int64[6] P =  {0,0,1,0,0,0}, float[1,1,3] Padded>
+{
+   Padded = Pad (X, P)
+   Y, I = MaxPool <kernel_shape: ints = [2]> (Padded)
+}

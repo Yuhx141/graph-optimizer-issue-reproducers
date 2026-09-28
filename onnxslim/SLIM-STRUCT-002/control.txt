@@ -1,0 +1,11 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 13],
+   producer_name: "graphopt-source-rule-cases"
+>
+"unsqueeze-single" (float[2] X) => (float[1,2,1] Y) 
+   <int64[1] A0 =  {1}, int64[1] A1 =  {0}, float[2,1] U>
+{
+   U = Unsqueeze (X, A0)
+   Y = Unsqueeze (U, A1)
+}

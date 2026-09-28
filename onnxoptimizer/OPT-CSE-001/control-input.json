@@ -1,0 +1,20 @@
+{
+  "X": {
+    "dtype": "float32",
+    "shape": [
+      1
+    ],
+    "values": [
+      2.0
+    ]
+  },
+  "Z": {
+    "dtype": "float32",
+    "shape": [
+      1
+    ],
+    "values": [
+      3.0
+    ]
+  }
+}

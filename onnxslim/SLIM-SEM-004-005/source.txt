@@ -1,0 +1,11 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 13],
+   producer_name: "graphopt-source-rule-cases"
+>
+"conv-add-height-bias" (float[1,1,2,3] X) => (float[1,2,2,3] Y) 
+   <float[2,1,1,1] W =  {1,2}, float[2,1] B =  {10,20}, float[1,2,2,3] C>
+{
+   C = Conv <kernel_shape: ints = [1, 1]> (X, W)
+   Y = Add (C, B)
+}

@@ -1,0 +1,12 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 13],
+   producer_name: "graphopt-source-rule-cases"
+>
+"qkv-vector-weights" (float[2,3] X) => (float[2] Y0, float[2] Y1, float[2] Y2) 
+   <float[3] W0 =  {1,2,3}, float[3] W1 =  {4,1,2}, float[3] W2 =  {2,5,1}>
+{
+   Y0 = MatMul (X, W0)
+   Y1 = MatMul (X, W1)
+   Y2 = MatMul (X, W2)
+}

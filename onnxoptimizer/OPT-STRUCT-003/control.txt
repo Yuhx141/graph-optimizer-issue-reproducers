@@ -1,0 +1,9 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 13],
+   producer_name: "graphopt-upstream-issue-pack"
+>
+"optimizer-constant-collision" () => (float[1] out_a, float[1] out_b) {
+   out_a = Constant <value: tensor = float[1] tensor_a {1}> ()
+   [out_b] out_b = Constant <value: tensor = float[1] tensor_b {2}> ()
+}

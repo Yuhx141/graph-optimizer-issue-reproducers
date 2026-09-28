@@ -1,0 +1,11 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 13],
+   producer_name: "graphopt-source-rule-cases"
+>
+"reduce-unsqueeze-one-axis" (float[2,3,4] X) => (float[2,3,1] Y) 
+   <int64[1] A =  {2}, float[2,3] R>
+{
+   R = ReduceSum <keepdims: int = 0> (X, A)
+   Y = Unsqueeze (R, A)
+}

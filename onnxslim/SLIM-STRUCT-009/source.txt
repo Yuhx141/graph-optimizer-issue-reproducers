@@ -1,0 +1,10 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 13],
+   producer_name: "graphopt-upstream-issue-pack"
+>
+"slim-resize-0.5" (float[2,3] X) => (float[2,1] Y) 
+   <float[2] scales =  {1,0.5}>
+{
+   Y = Resize <mode: string = "nearest"> (X, "", scales)
+}

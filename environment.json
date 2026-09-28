@@ -1,0 +1,72 @@
+{
+  "build_dependencies": {
+    "onnxoptimizer_main": {
+      "abseil": "20250127.0",
+      "max_jobs": 2,
+      "nanobind": "2.12.0",
+      "protobuf": "25.1"
+    },
+    "onnxruntime_main": {
+      "parallel": 2,
+      "submodule_sync": false,
+      "unit_tests": false
+    }
+  },
+  "commands": {
+    "onnxoptimizer_main": "MAX_JOBS=2 python -m pip wheel . --no-build-isolation",
+    "onnxruntime_main": "python tools/ci_build/build.py --config Release --build_wheel --skip_tests --parallel 2 --skip_submodule_sync --cmake_extra_defines onnxruntime_BUILD_UNIT_TESTS=OFF",
+    "onnxslim_main": "python -m pip install onnxslim-e877aedb.tar.gz",
+    "release": "python -m pip install numpy==2.4.6 onnx==1.22.0 onnxruntime==1.30.0 onnxslim==0.1.96 onnxoptimizer==0.4.2"
+  },
+  "numpy": "2.4.6",
+  "onnx": "1.22.0",
+  "onnxruntime_release": "1.30.0",
+  "platform": "Ubuntu Linux x86-64",
+  "python": "3.11.16",
+  "source_archives": {
+    "onnxoptimizer_main": {
+      "combined_source_sha256": "b40c68ed58208b49ded532dd1d1a385218360d1821a4bce3d793ecd9fc408412",
+      "onnx_submodule_commit": "777531d88b75bcd339f0841c7555bd0dbecc92fc",
+      "url": "https://github.com/onnx/optimizer/archive/c8d77f3b8326297d7bfb851513079616f7219cdc.tar.gz",
+      "wheel_sha256": "bc0f4fa9928a9d9da545cf3d08507dbcfb1a22e8a87ee6869869d6a95af6c9ef"
+    },
+    "onnxruntime_main": {
+      "sha256": "5cfe49da88a873ded7c5082a8dbe250d387ccf75842bfb022c06452ba7b9de6c",
+      "url": "https://github.com/microsoft/onnxruntime/archive/a11b4e593164c82f7ce95efce3693744103f8176.tar.gz",
+      "wheel_sha256": "4e57ba2a2f013183380d3f44cc15070fb85d9cd8e5afdee148890ae7a4cde2f7",
+      "wheel_version": "1.31.0"
+    },
+    "onnxslim_main": {
+      "sha256": "5c619248c950ac054cbba6c5ebf1e155809f058e76de77c32b72228596a6fa16",
+      "url": "https://github.com/inisis/OnnxSlim/archive/e877aedb25311c27abd044bbd9fae22d9a5ee69a.tar.gz"
+    }
+  },
+  "source_file_sha256": {
+    "note": "Each file has this same hash in v1.30.0 and a11b4e593164c82f7ce95efce3693744103f8176.",
+    "onnxruntime/core/optimizer/matmul_bn_fusion.cc": "b4bcd5c1e89406f4f52759317c663d8101c02c126a2796ff9eaca2c8a6ec61f7",
+    "onnxruntime/core/optimizer/pad_fusion.cc": "c5f56cc8c3170bbfdbc171e911a377da63dabc0ddea099e0c37b642d84a71e2a"
+  },
+  "versions": {
+    "onnxoptimizer": {
+      "main": "c8d77f3b8326297d7bfb851513079616f7219cdc",
+      "name": "onnxoptimizer",
+      "release": "v0.4.2",
+      "release_commit": "ed2d224364233dc724ddd94e0081dfd1e5df212a",
+      "repo": "https://github.com/onnx/optimizer"
+    },
+    "onnxruntime": {
+      "main": "a11b4e593164c82f7ce95efce3693744103f8176",
+      "name": "ONNX Runtime",
+      "release": "v1.30.0",
+      "release_commit": "f2c39fe2f838cf35ce7da92824f5a5e3ee6e88a7",
+      "repo": "https://github.com/microsoft/onnxruntime"
+    },
+    "onnxslim": {
+      "main": "e877aedb25311c27abd044bbd9fae22d9a5ee69a",
+      "name": "OnnxSlim",
+      "release": "v0.1.96",
+      "release_commit": "1448291a6c6f4163b6216073eed87d76fcd03659",
+      "repo": "https://github.com/inisis/OnnxSlim"
+    }
+  }
+}
