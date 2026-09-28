@@ -59,3 +59,7 @@ Linux x86-64, CPython 3.11, ONNX 1.22.0, NumPy 2.4.6, ONNX Runtime 1.30.0, CPU e
 - [`source.txt`](https://github.com/Yuhx141/graph-optimizer-issue-reproducers/blob/main/onnxoptimizer/OPT-SEM-001/source.txt): readable ONNX graph
 - [`control.txt`](https://github.com/Yuhx141/graph-optimizer-issue-reproducers/blob/main/onnxoptimizer/OPT-SEM-001/control.txt): one-condition control
 - Tiny `.onnx` models, JSON inputs, and SHA-256 hashes are in the same directory.
+
+## Previous report
+
+This replaces the withdrawn report [#334](https://github.com/onnx/optimizer/issues/334) with a public, human-readable reproducer.
