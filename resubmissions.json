@@ -1,0 +1,293 @@
+{
+  "format": "graphopt-upstream-resubmissions/v1",
+  "issues": {
+    "OPT-CRASH-001": {
+      "labels": [],
+      "new_url": "https://github.com/onnx/optimizer/issues/342",
+      "old_url": "https://github.com/onnx/optimizer/issues/341",
+      "repository": "onnx/optimizer",
+      "title": "fuse_qkv asserts when three MatMul weights are rank-1 tensors",
+      "verified_at": "2026-09-28T06:38:33.677106+00:00"
+    },
+    "OPT-CSE-001": {
+      "labels": [],
+      "new_url": "https://github.com/onnx/optimizer/issues/343",
+      "old_url": "https://github.com/onnx/optimizer/issues/340",
+      "repository": "onnx/optimizer",
+      "title": "eliminate_common_subexpression conflates nodes from different operator domains",
+      "verified_at": "2026-09-28T06:38:38.673499+00:00"
+    },
+    "OPT-RESHAPE-001": {
+      "labels": [],
+      "new_url": "https://github.com/onnx/optimizer/issues/344",
+      "old_url": "https://github.com/onnx/optimizer/issues/333",
+      "repository": "onnx/optimizer",
+      "title": "Consecutive Reshape elimination reinterprets zero dimensions against the wrong input",
+      "verified_at": "2026-09-28T06:38:43.216231+00:00"
+    },
+    "OPT-SEM-001": {
+      "labels": [],
+      "new_url": "https://github.com/onnx/optimizer/issues/345",
+      "old_url": "https://github.com/onnx/optimizer/issues/334",
+      "repository": "onnx/optimizer",
+      "title": "eliminate_slice_after_shape ignores a nonzero Shape start",
+      "verified_at": "2026-09-28T06:38:47.740125+00:00"
+    },
+    "OPT-SEM-002": {
+      "labels": [],
+      "new_url": "https://github.com/onnx/optimizer/issues/346",
+      "old_url": "https://github.com/onnx/optimizer/issues/335",
+      "repository": "onnx/optimizer",
+      "title": "Pad-to-MaxPool fusion changes zero padding into negative-infinity padding",
+      "verified_at": "2026-09-28T06:38:52.780435+00:00"
+    },
+    "OPT-SEM-003": {
+      "labels": [],
+      "new_url": "https://github.com/onnx/optimizer/issues/347",
+      "old_url": "https://github.com/onnx/optimizer/issues/336",
+      "repository": "onnx/optimizer",
+      "title": "Pad-to-AveragePool fusion changes the denominator with existing pool padding",
+      "verified_at": "2026-09-28T06:38:58.298078+00:00"
+    },
+    "OPT-SEM-004": {
+      "labels": [],
+      "new_url": "https://github.com/onnx/optimizer/issues/348",
+      "old_url": "https://github.com/onnx/optimizer/issues/337",
+      "repository": "onnx/optimizer",
+      "title": "Pad-to-MaxPool fusion does not preserve the indices output coordinate system",
+      "verified_at": "2026-09-28T06:39:03.937556+00:00"
+    },
+    "OPT-SEM-005": {
+      "labels": [],
+      "new_url": "https://github.com/onnx/optimizer/issues/349",
+      "old_url": "https://github.com/onnx/optimizer/issues/338",
+      "repository": "onnx/optimizer",
+      "title": "Pad-to-Conv fusion drops a nonzero Pad value in opset 10",
+      "verified_at": "2026-09-28T06:39:09.171981+00:00"
+    },
+    "OPT-STRUCT-003": {
+      "labels": [],
+      "new_url": "https://github.com/onnx/optimizer/issues/350",
+      "old_url": "https://github.com/onnx/optimizer/issues/339",
+      "repository": "onnx/optimizer",
+      "title": "extract_constant_to_initializer can create duplicate initializer names",
+      "verified_at": "2026-09-28T06:39:14.440721+00:00"
+    },
+    "ORT-SEM-001": {
+      "labels": [],
+      "new_url": "https://github.com/microsoft/onnxruntime/issues/32858",
+      "old_url": "https://github.com/microsoft/onnxruntime/issues/32856",
+      "repository": "microsoft/onnxruntime",
+      "title": "Pad_Fusion changes zero padding semantics before MaxPool for negative inputs",
+      "verified_at": "2026-09-28T06:39:30.032960+00:00"
+    },
+    "ORT-SEM-002": {
+      "labels": [],
+      "new_url": "https://github.com/microsoft/onnxruntime/issues/32859",
+      "old_url": "https://github.com/microsoft/onnxruntime/issues/32857",
+      "repository": "microsoft/onnxruntime",
+      "title": "MatMul_BatchNormalization_Fusion removes a public intermediate Reshape output",
+      "verified_at": "2026-09-28T06:39:34.708580+00:00"
+    },
+    "SLIM-CRASH-001A": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/355",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/348",
+      "repository": "inisis/OnnxSlim",
+      "title": "FusionGemmAdd raises IndexError when Gemm has no bias input",
+      "verified_at": "2026-09-28T06:35:57.756176+00:00"
+    },
+    "SLIM-CRASH-001B": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/356",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/349",
+      "repository": "inisis/OnnxSlim",
+      "title": "FusionGemm raises IndexError on a rank-3 broadcast Add bias",
+      "verified_at": "2026-09-28T06:36:02.054636+00:00"
+    },
+    "SLIM-CRASH-002": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/357",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/350",
+      "repository": "inisis/OnnxSlim",
+      "title": "FusionPadConv raises IndexError for the valid opset-10 Pad attribute form",
+      "verified_at": "2026-09-28T06:36:06.755528+00:00"
+    },
+    "SLIM-CRASH-003": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/358",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/351",
+      "repository": "inisis/OnnxSlim",
+      "title": "FusionConvBN raises AttributeError when a BatchNormalization parameter is dynamic",
+      "verified_at": "2026-09-28T06:36:11.185734+00:00"
+    },
+    "SLIM-CRASH-004": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/359",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/352",
+      "repository": "inisis/OnnxSlim",
+      "title": "FusionConvTransposeBN fails to broadcast grouped ConvTranspose weights",
+      "verified_at": "2026-09-28T06:36:15.438947+00:00"
+    },
+    "SLIM-CRASH-005": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/360",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/353",
+      "repository": "inisis/OnnxSlim",
+      "title": "FusionReduce compares multi-axis arrays as a scalar boolean",
+      "verified_at": "2026-09-28T06:36:19.442629+00:00"
+    },
+    "SLIM-CSE-001": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/361",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/342",
+      "repository": "inisis/OnnxSlim",
+      "title": "Common-subexpression elimination conflates nodes from different operator domains",
+      "verified_at": "2026-09-28T06:36:24.736990+00:00"
+    },
+    "SLIM-RESHAPE-001": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/362",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/338",
+      "repository": "inisis/OnnxSlim",
+      "title": "Consecutive Reshape elimination reinterprets zero dimensions against the wrong input",
+      "verified_at": "2026-09-28T06:36:29.502443+00:00"
+    },
+    "SLIM-SEM-001": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/354",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/334",
+      "repository": "inisis/OnnxSlim",
+      "title": "FusionGemmAdd ignores a non-default Gemm beta when folding Add",
+      "verified_at": "2026-09-28T06:36:32.370485+00:00"
+    },
+    "SLIM-SEM-003": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/363",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/335",
+      "repository": "inisis/OnnxSlim",
+      "title": "FusionGemm reverses MatMul operands when the constant is on the left",
+      "verified_at": "2026-09-28T06:36:36.372071+00:00"
+    },
+    "SLIM-SEM-004-005": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/364",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/336",
+      "repository": "inisis/OnnxSlim",
+      "title": "Conv Add fusion treats spatial-axis broadcasting as channel bias",
+      "verified_at": "2026-09-28T06:36:40.672570+00:00"
+    },
+    "SLIM-SEM-006": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/365",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/337",
+      "repository": "inisis/OnnxSlim",
+      "title": "Gemm Add fusion across Reshape changes broadcasting and output shape",
+      "verified_at": "2026-09-28T06:36:45.003355+00:00"
+    },
+    "SLIM-STRUCT-002": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/366",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/343",
+      "repository": "inisis/OnnxSlim",
+      "title": "EliminationUnsqueeze can emit duplicate axes for crossing Unsqueeze axes",
+      "verified_at": "2026-09-28T06:36:50.400955+00:00"
+    },
+    "SLIM-STRUCT-003": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/367",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/344",
+      "repository": "inisis/OnnxSlim",
+      "title": "EliminationSlice misses overlapping axes expressed with negative aliases",
+      "verified_at": "2026-09-28T06:36:54.387460+00:00"
+    },
+    "SLIM-STRUCT-004": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/368",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/345",
+      "repository": "inisis/OnnxSlim",
+      "title": "Shape/Slice inference writes inconsistent output metadata with Shape start",
+      "verified_at": "2026-09-28T06:36:58.917876+00:00"
+    },
+    "SLIM-STRUCT-005": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/369",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/346",
+      "repository": "inisis/OnnxSlim",
+      "title": "FusionPadConv transfers negative crop widths into illegal Conv pads",
+      "verified_at": "2026-09-28T06:37:03.444140+00:00"
+    },
+    "SLIM-STRUCT-006": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/370",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/347",
+      "repository": "inisis/OnnxSlim",
+      "title": "FusionConvBN rewrites training-mode BatchNormalization outputs as Conv outputs",
+      "verified_at": "2026-09-28T06:37:07.630489+00:00"
+    },
+    "SLIM-STRUCT-008": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/371",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/339",
+      "repository": "inisis/OnnxSlim",
+      "title": "Slice shape inference writes a negative dimension for a legal empty slice",
+      "verified_at": "2026-09-28T06:37:12.341512+00:00"
+    },
+    "SLIM-STRUCT-009": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/372",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/340",
+      "repository": "inisis/OnnxSlim",
+      "title": "Resize shape inference rounds scales instead of applying floor",
+      "verified_at": "2026-09-28T06:37:19.489728+00:00"
+    },
+    "SLIM-STRUCT-010": {
+      "labels": [
+        "bug"
+      ],
+      "new_url": "https://github.com/inisis/OnnxSlim/issues/373",
+      "old_url": "https://github.com/inisis/OnnxSlim/issues/341",
+      "repository": "inisis/OnnxSlim",
+      "title": "Overlapping Transpose elimination removes a producer still used by another branch",
+      "verified_at": "2026-09-28T06:37:25.262485+00:00"
+    }
+  }
+}
