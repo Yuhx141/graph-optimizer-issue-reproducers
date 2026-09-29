@@ -1,0 +1,32 @@
+[
+  {
+    "case": "loop-nested-capture",
+    "mode": "default",
+    "onnxsim_version": "0.7.3",
+    "pass": "eliminate_loop_with_const_trip_count",
+    "returncode": 0,
+    "simplify_error": "RuntimeError: Nodes in a graph must be topologically sorted, however input 'v_in' of node: \nname: Add_0 OpType: Add\n is not output of any previous nodes.",
+    "source_checker": "passed",
+    "stderr": ""
+  },
+  {
+    "case": "loop-nested-capture",
+    "check_ok": true,
+    "comparison": {
+      "finite_mask_equal": true,
+      "max_abs": 0.0,
+      "same_exact": true
+    },
+    "mode": "disabled",
+    "onnxsim_version": "0.7.3",
+    "pass": "eliminate_loop_with_const_trip_count",
+    "returncode": 0,
+    "runtime": "passed",
+    "source_checker": "passed",
+    "stderr": "",
+    "target_checker": "passed",
+    "target_ops": [
+      "Loop"
+    ]
+  }
+]

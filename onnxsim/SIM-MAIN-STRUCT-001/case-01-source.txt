@@ -1,0 +1,18 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 18]
+>
+nested_loop (float[1] X) => (float[1] Y) 
+   <int64 trip =  {2}, bool cond = ...>
+{
+   Y = Loop (trip, cond, X) <body: graph = loop_body (int64 iter, bool cond_in, float[1] v_in) => (bool cond_in, float[1] v_out) {
+      step = If (cond_in) <else_branch: graph = else_branch () => (float[1] else_y) {
+         else_y = Identity (v_in)
+      }, then_branch: graph = then_branch () => (float[1] then_y) 
+         <float[1] one =  {1}>
+{
+         then_y = Add (v_in, one)
+      }>
+      v_out = Identity (step)
+   }>
+}
