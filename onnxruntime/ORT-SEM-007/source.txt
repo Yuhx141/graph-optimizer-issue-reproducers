@@ -1,0 +1,8 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 14]
+>
+gather_to_slice_source_seed (float[8,8,8,8] data, int64 start, int64 limit, int64 delta) => (float[8,8,8,8] Y, int64[8] range) {
+   range = Range (start, limit, delta)
+   Y = Gather <axis: int = 2> (data, range)
+}
