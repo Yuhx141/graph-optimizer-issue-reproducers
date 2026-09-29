@@ -1,0 +1,19 @@
+<
+   ir_version: 7,
+   opset_import: ["" : 17, "com.microsoft" : 1]
+>
+EmbedLayerNorm_format5 (int64[2,3] input_ids, int64[2,3] segment_ids, int64[2,3] input_mask) => (float[2,3,4] add2_out) 
+   <float[2,4] word_embed =  {1,2,3,4,1,2,3,4}, float[2,3,4] pos_gather_out =  {1,2,3,4,5,6,7,8,9,8,7,6,1,2,3,4,5,6,7,8,9,8,7,6}, float[2,4] seg_embed =  {1,2,3,4,1,2,3,4}, float[4] layer_norm_weight =  {1,2,3,4}, float[4] layer_norm_bias =  {0.1,0.2,0.3,0.4}, float[4,12] qkv_weights =  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, float[12] qkv_bias =  {0.1,0.2,0.3,0.4,0.1,0.2,0.3,0.4,0.1,0.2,0.3,0.4}, float[4,4] matmul_weight =  {1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4}, float[4] add_bias =  {0.1,0.2,0.3,0.4}, int64[1] axes_1 =  {1}, float[2,3,4] word_gather_out, float[2,3,4] word_add_pos_out, float[2,3,4] seg_gather_out, float[2,3,4] add3_out, float[2,3,4] layernorm_out, int32[2,3] mask_cast_out, int32[2] mask_index_out>
+{
+   [word_gather] word_gather_out = Gather <axis: int = 0> (word_embed, input_ids)
+   [word_add_pos] word_add_pos_out = Add (word_gather_out, pos_gather_out)
+   [seg_gather] seg_gather_out = Gather <axis: int = 0> (seg_embed, segment_ids)
+   [add3] add3_out = Add (word_add_pos_out, seg_gather_out)
+   [layernorm] layernorm_out = LayerNormalization <epsion: float = 1e-05, axis: int = -2> (add3_out, layer_norm_weight, layer_norm_bias)
+   [mask_cast] mask_cast_out = Cast <to: int = 6> (input_mask)
+   [mask_index] mask_index_out = ReduceSum <keepdims: int = 0> (mask_cast_out, axes_1)
+   [att] att_out = com.microsoft.Attention <num_heads: int = 2> (layernorm_out, qkv_weights, qkv_bias, mask_index_out)
+   [matmul] matmul_out = MatMul (att_out, matmul_weight)
+   [add] add_out = Add (matmul_out, add_bias)
+   [add2] add2_out = Add (add_out, layernorm_out)
+}
