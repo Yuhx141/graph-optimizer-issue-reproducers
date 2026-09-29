@@ -1,0 +1,130 @@
+[
+  {
+    "case": "attention-zero-scale",
+    "check_ok": true,
+    "comparison": {
+      "finite_mask_equal": true,
+      "max_abs": 6.505586504936218,
+      "same_exact": false
+    },
+    "mode": "default",
+    "onnxsim_version": "0.7.3",
+    "pass": "fuse_attention",
+    "returncode": 0,
+    "runtime": "passed",
+    "source_checker": "passed",
+    "stderr": "",
+    "target_checker": "passed",
+    "target_ops": [
+      "Attention",
+      "Reshape",
+      "Gemm",
+      "Reshape"
+    ]
+  },
+  {
+    "case": "attention-zero-scale",
+    "check_ok": true,
+    "comparison": {
+      "finite_mask_equal": true,
+      "max_abs": 0.0,
+      "same_exact": true
+    },
+    "mode": "disabled",
+    "onnxsim_version": "0.7.3",
+    "pass": "fuse_attention",
+    "returncode": 0,
+    "runtime": "passed",
+    "source_checker": "passed",
+    "stderr": "",
+    "target_checker": "passed",
+    "target_ops": [
+      "Reshape",
+      "Gemm",
+      "Gemm",
+      "Gemm",
+      "Reshape",
+      "Transpose",
+      "Reshape",
+      "Transpose",
+      "Reshape",
+      "Transpose",
+      "MatMul",
+      "Mul",
+      "Softmax",
+      "MatMul",
+      "Transpose",
+      "Reshape",
+      "Gemm",
+      "Reshape"
+    ]
+  },
+  {
+    "case": "gqa-zero-scale",
+    "check_ok": true,
+    "comparison": {
+      "finite_mask_equal": true,
+      "max_abs": 1.862008810043335,
+      "same_exact": false
+    },
+    "mode": "default",
+    "onnxsim_version": "0.7.3",
+    "pass": "fuse_gqa",
+    "returncode": 0,
+    "runtime": "passed",
+    "source_checker": "passed",
+    "stderr": "",
+    "target_checker": "passed",
+    "target_ops": [
+      "MatMul",
+      "MatMul",
+      "MatMul",
+      "GroupQueryAttention",
+      "Reshape",
+      "MatMul"
+    ]
+  },
+  {
+    "case": "gqa-zero-scale",
+    "check_ok": true,
+    "comparison": {
+      "finite_mask_equal": true,
+      "max_abs": 0.0,
+      "same_exact": true
+    },
+    "mode": "disabled",
+    "onnxsim_version": "0.7.3",
+    "pass": "fuse_gqa",
+    "returncode": 0,
+    "runtime": "passed",
+    "source_checker": "passed",
+    "stderr": "",
+    "target_checker": "passed",
+    "target_ops": [
+      "MatMul",
+      "Reshape",
+      "Transpose",
+      "MatMul",
+      "Reshape",
+      "Transpose",
+      "Unsqueeze",
+      "Expand",
+      "Reshape",
+      "Transpose",
+      "MatMul",
+      "Reshape",
+      "Transpose",
+      "Unsqueeze",
+      "Expand",
+      "Reshape",
+      "MatMul",
+      "Div",
+      "Add",
+      "Softmax",
+      "MatMul",
+      "Transpose",
+      "Reshape",
+      "MatMul"
+    ]
+  }
+]
