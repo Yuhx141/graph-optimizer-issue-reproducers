@@ -1,0 +1,10 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 17]
+>
+skip_layer_norm_axis_minus_two (float[1,2,3] A, float[1,2,3] B) => (float[1,2,3] Y) 
+   <float[3] gamma =  {1,1.5,2}, float[3] beta =  {0.1,-0.2,0.3}>
+{
+   [add] sum = Add (A, B)
+   [layernorm] Y = LayerNormalization <axis: int = -2, epsilon: float = 1e-05> (sum, gamma, beta)
+}
