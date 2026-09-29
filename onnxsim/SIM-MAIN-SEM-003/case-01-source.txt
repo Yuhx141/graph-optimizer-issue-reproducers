@@ -1,0 +1,17 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 17]
+>
+layernorm_double_epsilon (double[1,3] X) => (double[1,3] Y) 
+   <double eps =  {1e-300}, double[3] scale =  {1.1,0.9,1.2}, double[3] bias =  {0.1,-0.2,0.3}>
+{
+   mean = ReduceMean <axes: ints = [-1], keepdims: int = 1> (X)
+   diff = Sub (X, mean)
+   sq = Mul (diff, diff)
+   var = ReduceMean <axes: ints = [-1], keepdims: int = 1> (sq)
+   var_eps = Add (var, eps)
+   std = Sqrt (var_eps)
+   norm = Div (diff, std)
+   scaled = Mul (norm, scale)
+   Y = Add (scaled, bias)
+}

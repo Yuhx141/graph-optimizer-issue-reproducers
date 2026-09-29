@@ -1,0 +1,14 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 23]
+>
+rmsnorm_double_epsilon (double[1,3] X) => (double[1,3] Y) 
+   <int64[1] axes =  {-1}, double eps =  {1e-300}, double[3] scale =  {1.1,0.9,1.2}>
+{
+   sq = Mul (X, X)
+   mean = ReduceMean <keepdims: int = 1> (sq, axes)
+   var_eps = Add (mean, eps)
+   std = Sqrt (var_eps)
+   norm = Div (X, std)
+   Y = Mul (norm, scale)
+}

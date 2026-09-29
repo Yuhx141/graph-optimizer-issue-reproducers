@@ -1,0 +1,95 @@
+[
+  {
+    "case": "layernorm-double-epsilon",
+    "check_ok": true,
+    "comparison": {
+      "finite_mask_equal": true,
+      "max_abs": 0.49516302236511656,
+      "same_exact": false
+    },
+    "mode": "default",
+    "onnxsim_version": "0.7.3",
+    "pass": "fuse_layer_norm",
+    "returncode": 0,
+    "runtime": "passed",
+    "source_checker": "passed",
+    "stderr": "",
+    "target_checker": "passed",
+    "target_ops": [
+      "LayerNormalization"
+    ]
+  },
+  {
+    "case": "layernorm-double-epsilon",
+    "check_ok": true,
+    "comparison": {
+      "finite_mask_equal": true,
+      "max_abs": 0.0,
+      "same_exact": true
+    },
+    "mode": "disabled",
+    "onnxsim_version": "0.7.3",
+    "pass": "fuse_layer_norm",
+    "returncode": 0,
+    "runtime": "passed",
+    "source_checker": "passed",
+    "stderr": "",
+    "target_checker": "passed",
+    "target_ops": [
+      "ReduceMean",
+      "Sub",
+      "Mul",
+      "ReduceMean",
+      "Add",
+      "Sqrt",
+      "Div",
+      "Mul",
+      "Add"
+    ]
+  },
+  {
+    "case": "rmsnorm-double-epsilon",
+    "check_ok": true,
+    "comparison": {
+      "finite_mask_equal": true,
+      "max_abs": 0.49516302236511645,
+      "same_exact": false
+    },
+    "mode": "default",
+    "onnxsim_version": "0.7.3",
+    "pass": "fuse_rms_norm",
+    "returncode": 0,
+    "runtime": "passed",
+    "source_checker": "passed",
+    "stderr": "",
+    "target_checker": "passed",
+    "target_ops": [
+      "RMSNormalization"
+    ]
+  },
+  {
+    "case": "rmsnorm-double-epsilon",
+    "check_ok": true,
+    "comparison": {
+      "finite_mask_equal": true,
+      "max_abs": 0.0,
+      "same_exact": true
+    },
+    "mode": "disabled",
+    "onnxsim_version": "0.7.3",
+    "pass": "fuse_rms_norm",
+    "returncode": 0,
+    "runtime": "passed",
+    "source_checker": "passed",
+    "stderr": "",
+    "target_checker": "passed",
+    "target_ops": [
+      "Mul",
+      "ReduceMean",
+      "Add",
+      "Sqrt",
+      "Div",
+      "Mul"
+    ]
+  }
+]
