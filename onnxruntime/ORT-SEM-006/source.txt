@@ -1,0 +1,11 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 21]
+>
+transpose_cast_matmul_source_seed (float[4,32] X, float[8,32] B) => (float[4,8] Y, float[32,8] cast) 
+   <float[32,8] transpose>
+{
+   transpose = Transpose <perm: ints = [1, 0]> (B)
+   cast = Cast <to: int = 1> (transpose)
+   Y = MatMul (X, cast)
+}
