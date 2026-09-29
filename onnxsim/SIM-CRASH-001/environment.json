@@ -1,0 +1,12 @@
+{
+  "os": "Ubuntu 24.04.4 LTS x86_64",
+  "python": "3.11.16",
+  "onnxsim_commit": "cc035f51c7ee7b8363f8990d19c33562d827bfc4",
+  "onnxsim_optimizer_commit": "8c13b168c37e74b610d0cccba4e9e01618c612a7",
+  "onnxsim_release": "v0.7.3",
+  "onnx": "1.22.0",
+  "onnxruntime": "1.30.0",
+  "numpy": "2.4.6",
+  "execution_provider": "CPUExecutionProvider",
+  "runtime_graph_optimization": "disabled"
+}

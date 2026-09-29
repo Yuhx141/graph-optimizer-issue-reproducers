@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Shape start beyond rank",
+    "pass": "eliminate_shape_op",
+    "source": "case-01-source.onnx",
+    "input": null,
+    "expected_default": "process_crash",
+    "expected_disabled": "valid_target"
+  }
+]

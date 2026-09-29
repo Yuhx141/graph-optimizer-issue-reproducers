@@ -1,0 +1,7 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 21]
+>
+g (float[1] X) => (int64[0] Y) {
+   Y = Shape <start: int = 2> (X)
+}
