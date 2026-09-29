@@ -1,0 +1,17 @@
+<
+   ir_version: 3,
+   opset_import: ["" : 7],
+   producer_name: "CNTK",
+   producer_version: "2.5.1",
+   domain: "ai.cntk",
+   model_version: 1
+>
+CNTKGraph (float[None,1,2] Input3, float[1,12,2] Parameter5, float[1,12,3] Parameter6, float[1,24] Parameter4, float[1,1,3] Block1237_Output_0_initial_h, float[1,1,3] Block1237_Output_1_initial_c, int64[3] Block1237_Output_0_shape, float[1,12,2] Parameter454, float[1,12,3] Parameter455, float[1,24] Parameter453, float[1,1,3] Block1326_Output_0_initial_h, float[1,1,3] Block1326_Output_1_initial_c, int64[3] Block1326_Output_0_shape) => (float[?,1,6] Splice1349_Output_0) 
+   <float[1,12,2] Parameter5 =  {-0.445435,0.563567,0.644369,-0.203747,-0.602846,-0.321284,0.531973,0.103781,-0.100623,0.0845153,0.203631,-0.462947,0.172211,0.0755215,-0.10007,-0.278319,0.448124,-0.463736,0.12765,-0.0724428,0.055364,0.379947,-0.579814,0.255865}, float[1,12,3] Parameter6 =  {-0.463113,0.366384,-0.225459,-0.459913,-0.352109,-0.4893,-0.0617088,-0.102877,-0.481484,0.171055,0.314951,-0.128552,-0.519305,-0.0529687,-0.391671,0.0710613,-0.245157,0.122685,-0.036996,-0.0321366,0.367084,-0.538314,-0.291006,-0.135948,0.0883504,-0.270638,0.037868,-0.605862,-0.316509,-0.545026,-0.188601,-0.263273,0.246355,0.520331,0.383567,0.18695}, float[1,24] Parameter4 =  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, float[1,1,3] Block1237_Output_0_initial_h =  {0,0,0}, float[1,1,3] Block1237_Output_1_initial_c =  {0,0,0}, int64[3] Block1237_Output_0_shape =  {0,1,3}, float[1,12,2] Parameter454 =  {0.528442,0.397154,0.458567,-0.480806,0.371608,-0.39178,0.243325,-0.562185,0.201745,-0.0464899,0.613273,-0.0824336,-0.360661,-0.187908,-0.524181,-0.152175,-0.625734,-0.579637,0.556871,-0.566113,-0.323525,0.652401,-0.476737,0.0863778}, float[1,12,3] Parameter455 =  {0.0743337,0.0861666,0.397688,-0.384832,0.522502,-0.309778,0.114147,-0.302222,-0.191464,-0.422309,-0.361186,-0.0581178,-0.490052,-0.592314,0.176751,0.115482,-0.534301,0.49211,0.300093,0.605097,-0.594245,-0.0978317,-0.0081468,0.168055,0.258959,-0.150974,-0.316684,-0.19433,-0.606605,-0.171718,0.0756362,-0.272506,0.192617,-0.17544,0.36998,0.0561373}, float[1,24] Parameter453 =  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, float[1,1,3] Block1326_Output_0_initial_h =  {0,0,0}, float[1,1,3] Block1326_Output_1_initial_c =  {0,0,0}, int64[3] Block1326_Output_0_shape =  {0,1,3}, float[None,1,1,3] Block1237_Output_0_before_reshape, float[None,1,1,3] Block1326_Output_0_before_reshape, float[None,1,3] Block1237_Output_0, float[None,1,3] Block1326_Output_0>
+{
+   [Block1237] Block1237_Output_0_before_reshape = LSTM <direction: string = "reverse", activations: strings = ["Sigmoid", "Tanh", "Tanh"], hidden_size: int = 3, input_forget: int = 0> (Input3, Parameter5, Parameter6, Parameter4, "", Block1237_Output_0_initial_h, Block1237_Output_1_initial_c, "")
+   [Combine1218_reshape] Block1237_Output_0 = Reshape (Block1237_Output_0_before_reshape, Block1237_Output_0_shape)
+   [Block1326] Block1326_Output_0_before_reshape = LSTM <direction: string = "forward", activations: strings = ["Sigmoid", "Tanh", "Tanh"], hidden_size: int = 3, input_forget: int = 0> (Input3, Parameter454, Parameter455, Parameter453, "", Block1326_Output_0_initial_h, Block1326_Output_1_initial_c, "")
+   [Combine1307_reshape] Block1326_Output_0 = Reshape (Block1326_Output_0_before_reshape, Block1326_Output_0_shape)
+   [Splice1349] Splice1349_Output_0 = Concat <axis: int = 2> (Block1237_Output_0, Block1326_Output_0)
+}
