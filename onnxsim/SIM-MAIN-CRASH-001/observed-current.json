@@ -1,0 +1,43 @@
+[
+  {
+    "case": "rope-public-output",
+    "mode": "default",
+    "onnxsim_version": "0.7.3",
+    "pass": "fuse_rope",
+    "returncode": 0,
+    "simplify_error": "RuntimeError: <onnxsim-source>/third_party/onnx/onnx/common/ir.h:1857: eraseOutput: Assertion `outputs_[i]->uses().empty()` failed.",
+    "source_checker": "passed",
+    "stderr": ""
+  },
+  {
+    "case": "rope-public-output",
+    "check_ok": true,
+    "comparison": {
+      "finite_mask_equal": true,
+      "max_abs": 0.0,
+      "same_exact": true
+    },
+    "mode": "disabled",
+    "onnxsim_version": "0.7.3",
+    "pass": "fuse_rope",
+    "returncode": 0,
+    "runtime": "passed",
+    "source_checker": "passed",
+    "stderr": "",
+    "target_checker": "passed",
+    "target_ops": [
+      "Concat",
+      "Cos",
+      "Sin",
+      "Unsqueeze",
+      "Unsqueeze",
+      "Mul",
+      "Slice",
+      "Slice",
+      "Neg",
+      "Concat",
+      "Mul",
+      "Add"
+    ]
+  }
+]

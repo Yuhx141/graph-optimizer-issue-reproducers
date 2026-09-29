@@ -1,0 +1,20 @@
+<
+   ir_version: 11,
+   opset_import: ["" : 23]
+>
+g (float[1,2,3,4] x, float[1,3,2] angle) => (float[1,2,3,4] x_embed, float[1,3,4] emb) 
+   <int64[1] slice_start0 =  {0}, int64[1] slice_end2 =  {2}, int64[1] slice_start2 =  {2}, int64[1] slice_end_max =  {9223372036854775807}, int64[1] slice_axism1 =  {-1}, int64[1] unsq_axis1 =  {1}>
+{
+   emb = Concat <axis: int = -1> (angle, angle)
+   cos_full = Cos (emb)
+   sin_full = Sin (emb)
+   cos_bcast = Unsqueeze (cos_full, unsq_axis1)
+   sin_bcast = Unsqueeze (sin_full, unsq_axis1)
+   x_a = Mul (x, cos_bcast)
+   x_x1 = Slice (x, slice_start0, slice_end2, slice_axism1)
+   x_x2 = Slice (x, slice_start2, slice_end_max, slice_axism1)
+   x_neg_x2 = Neg (x_x2)
+   x_rotated = Concat <axis: int = -1> (x_neg_x2, x_x1)
+   x_b = Mul (x_rotated, sin_bcast)
+   x_embed = Add (x_a, x_b)
+}
