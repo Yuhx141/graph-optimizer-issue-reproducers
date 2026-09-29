@@ -1,0 +1,13 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 20]
+>
+gelu_approx_constant (float[1,3] X) => (float[1,3] Y) 
+   <float sqrt2 =  {1.41421}, float one =  {1}, float half =  {0.5009}>
+{
+   t0 = Div (X, sqrt2)
+   t1 = Erf (t0)
+   t2 = Add (t1, one)
+   t3 = Mul (X, t2)
+   Y = Mul (t3, half)
+}

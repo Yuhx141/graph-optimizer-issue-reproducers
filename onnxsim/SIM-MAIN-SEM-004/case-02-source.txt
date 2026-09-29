@@ -1,0 +1,17 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 17]
+>
+layer_norm_approx_exponent (float[1,3] X) => (float[1,3] Y) 
+   <float two =  {2.0005}, float eps =  {1e-05}, float[3] scale =  {1.1,0.9,1.2}, float[3] bias =  {0.2,-0.3,0.4}>
+{
+   mean = ReduceMean <axes: ints = [-1], keepdims: int = 1> (X)
+   diff = Sub (X, mean)
+   sq = Pow (diff, two)
+   var = ReduceMean <axes: ints = [-1], keepdims: int = 1> (sq)
+   var_eps = Add (var, eps)
+   std = Sqrt (var_eps)
+   norm = Div (diff, std)
+   scaled = Mul (norm, scale)
+   Y = Add (scaled, bias)
+}

@@ -1,0 +1,94 @@
+[
+  {
+    "case": "gelu-near-half",
+    "check_ok": true,
+    "comparison": {
+      "finite_mask_equal": true,
+      "max_abs": 0.035999298095703125,
+      "same_exact": false
+    },
+    "mode": "default",
+    "onnxsim_version": "0.7.3",
+    "pass": "fuse_gelu",
+    "returncode": 0,
+    "runtime": "passed",
+    "source_checker": "passed",
+    "stderr": "",
+    "target_checker": "passed",
+    "target_ops": [
+      "Gelu"
+    ]
+  },
+  {
+    "case": "gelu-near-half",
+    "check_ok": true,
+    "comparison": {
+      "finite_mask_equal": true,
+      "max_abs": 0.0,
+      "same_exact": true
+    },
+    "mode": "disabled",
+    "onnxsim_version": "0.7.3",
+    "pass": "fuse_gelu",
+    "returncode": 0,
+    "runtime": "passed",
+    "source_checker": "passed",
+    "stderr": "",
+    "target_checker": "passed",
+    "target_ops": [
+      "Div",
+      "Erf",
+      "Add",
+      "Mul",
+      "Mul"
+    ]
+  },
+  {
+    "case": "layernorm-near-two",
+    "check_ok": true,
+    "comparison": {
+      "finite_mask_equal": false,
+      "max_abs": 0.0,
+      "same_exact": false
+    },
+    "mode": "default",
+    "onnxsim_version": "0.7.3",
+    "pass": "fuse_layer_norm",
+    "returncode": 0,
+    "runtime": "passed",
+    "source_checker": "passed",
+    "stderr": "",
+    "target_checker": "passed",
+    "target_ops": [
+      "LayerNormalization"
+    ]
+  },
+  {
+    "case": "layernorm-near-two",
+    "check_ok": true,
+    "comparison": {
+      "finite_mask_equal": true,
+      "max_abs": 0.0,
+      "same_exact": true
+    },
+    "mode": "disabled",
+    "onnxsim_version": "0.7.3",
+    "pass": "fuse_layer_norm",
+    "returncode": 0,
+    "runtime": "passed",
+    "source_checker": "passed",
+    "stderr": "",
+    "target_checker": "passed",
+    "target_ops": [
+      "ReduceMean",
+      "Sub",
+      "Pow",
+      "ReduceMean",
+      "Add",
+      "Sqrt",
+      "Div",
+      "Mul",
+      "Add"
+    ]
+  }
+]
