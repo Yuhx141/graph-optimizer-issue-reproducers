@@ -1,0 +1,12 @@
+<
+   ir_version: 12,
+   opset_import: ["" : 24]
+>
+body_1 (int64 iter, bool cond_in, float[1] x_in) => (bool cond_out, float[1] x_out) {
+   [loop_1] x_mid = Loop (iter, cond_in, x_in) <body: graph = base_body (int64 iter, bool cond_in, float[1] x_in) => (bool cond_out, float[1] x_out) {
+      cond_out = Identity (cond_in)
+      x_out = Identity (x_in)
+   }>
+   cond_out = Identity (cond_in)
+   x_out = Identity (x_mid)
+}
