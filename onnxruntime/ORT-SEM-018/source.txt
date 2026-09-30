@@ -1,0 +1,11 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 13]
+>
+"slice-omitted-axes-steps" (float[6] X) => (float[?] Y) 
+   <int64[1] starts =  {0}, int64[1] ends =  {9223372036854775807}, int64[1] steps =  {2}>
+{
+   R = Relu (X)
+   S = Slice (R, starts, ends, "", steps)
+   Y = Neg (S)
+}
