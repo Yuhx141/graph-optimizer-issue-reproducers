@@ -1,0 +1,9 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 15]
+>
+"bernoulli-cse" (float[1024] X) => (float[1024] Y) {
+   A = Bernoulli <dtype: int = 1> (X)
+   B = Bernoulli <dtype: int = 1> (X)
+   Y = Sub (A, B)
+}
