@@ -1,0 +1,36 @@
+## layernorm.onnx
+
+<
+   ir_version: 10,
+   opset_import: ["" : 17]
+>
+"layernorm-double-epsilon" (double[1,4] X) => (double[1,4] Y) 
+   <double two =  {2}, double epsilon =  {1e-50}, double[4] scale =  {1,1,1,1}, double[4] bias =  {0,0,0,0}>
+{
+   mean = ReduceMean <axes: ints = [-1], keepdims: int = 1> (X)
+   centered = Sub (X, mean)
+   squared = Pow (centered, two)
+   variance = ReduceMean <axes: ints = [-1], keepdims: int = 1> (squared)
+   adjusted = Add (variance, epsilon)
+   stddev = Sqrt (adjusted)
+   normalized = Div (centered, stddev)
+   scaled = Mul (normalized, scale)
+   Y = Add (scaled, bias)
+}
+
+## simplified-layernorm.onnx
+
+<
+   ir_version: 10,
+   opset_import: ["" : 17]
+>
+"simplified-layernorm-double-epsilon" (double[1,4] X) => (double[1,4] Y) 
+   <double two =  {2}, double epsilon =  {1e-50}, double[4] scale =  {1,1,1,1}>
+{
+   squared = Pow (X, two)
+   variance = ReduceMean <axes: ints = [-1], keepdims: int = 1> (squared)
+   adjusted = Add (variance, epsilon)
+   stddev = Sqrt (adjusted)
+   normalized = Div (X, stddev)
+   Y = Mul (normalized, scale)
+}
