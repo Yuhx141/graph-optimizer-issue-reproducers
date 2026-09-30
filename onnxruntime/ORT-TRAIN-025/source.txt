@@ -1,0 +1,4 @@
+dynamic_runtime=onnxruntime-training 1.19.2
+dynamic_runtime_commit=ffceed9d44
+current_source_commit=b2097437af1184d2c0231fca2f2e6468158494b0
+scope=training get_optimized_model / QDQFusion / CPUExecutionProvider
