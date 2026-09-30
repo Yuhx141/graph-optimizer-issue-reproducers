@@ -1,4 +1,6 @@
-dynamic_runtime=onnxruntime-training 1.19.2
-dynamic_runtime_commit=ffceed9d44
-current_source_commit=b2097437af1184d2c0231fca2f2e6468158494b0
-scope=training get_optimized_model / ScaledSumFusion / CUDA-enabled training build
+dynamic_runtime=onnxruntime-training 1.31.0+cu128
+dynamic_runtime_commit=b2097437af1184d2c0231fca2f2e6468158494b0
+current_source_commit=02f169292255f115c69dd15923b10d35767b024f
+current_source_check=target transformer unchanged from dynamic_runtime_commit
+wheel_sha256=d19c746866854f23a7d63c541e36acee3d882b0174710a02b860ebba59441dd3
+scope=training get_optimized_model / ScaledSumFusion / selectable CPU or strict CUDAExecutionProvider

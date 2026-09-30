@@ -3,4 +3,6 @@ dynamic_runtime_commit=b2097437af1184d2c0231fca2f2e6468158494b0
 current_source_commit=02f169292255f115c69dd15923b10d35767b024f
 current_source_check=target transformer unchanged from dynamic_runtime_commit
 wheel_sha256=d19c746866854f23a7d63c541e36acee3d882b0174710a02b860ebba59441dd3
-scope=training get_optimized_model / TransposeReplacement / selectable CPU or strict CUDAExecutionProvider
+scope=training get_optimized_model / SoftmaxCrossEntropyLossInternalFusion / CUDAExecutionProvider / CPU fallback disabled
+cuda=12.8.1
+cudnn=9.8.0.87

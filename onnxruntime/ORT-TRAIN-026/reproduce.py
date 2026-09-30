@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 from pathlib import Path
 
 import numpy as np
@@ -9,13 +10,16 @@ import onnxruntime.capi._pybind_state as training
 
 ROOT = Path(__file__).parent
 X = np.arange(6, dtype=np.float32).reshape(2, 3)
+PROVIDER = os.environ.get("ORT_PROVIDER", "CPUExecutionProvider")
 
 
 def run(model):
     options = ort.SessionOptions()
     options.graph_optimization_level = ort.GraphOptimizationLevel.ORT_DISABLE_ALL
+    if PROVIDER == "CUDAExecutionProvider":
+        options.add_session_config_entry("session.disable_cpu_ep_fallback", "1")
     session = ort.InferenceSession(
-        model.SerializeToString(), options, providers=["CPUExecutionProvider"]
+        model.SerializeToString(), options, providers=[PROVIDER]
     )
     return session.run(None, {"X": X})[0]
 
@@ -41,11 +45,12 @@ explicit_output = run(explicit_result) if explicit_status == "ok" else None
 reproduced = (
     np.array_equal(omitted_source, explicit_source)
     and omitted_status == "error"
-    and "_Map_base::at" in omitted_result
+    and any(text in omitted_result for text in ("_Map_base::at", "unordered_map::at"))
     and explicit_status == "ok"
     and np.array_equal(omitted_source, explicit_output)
 )
 print("onnxruntime", ort.__version__)
+print("provider", PROVIDER)
 print("source", omitted_source.tolist())
 print("omitted perm", (omitted_status, omitted_result))
 print("explicit default perm control", explicit_status, explicit_output.tolist())

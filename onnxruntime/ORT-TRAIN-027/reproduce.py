@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import subprocess
 import sys
+import os
 from pathlib import Path
 
 import numpy as np
@@ -9,6 +10,7 @@ import onnxruntime as ort
 
 
 ROOT = Path(__file__).parent
+PROVIDER = os.environ.get("ORT_PROVIDER", "CPUExecutionProvider")
 FEEDS = {
     "A": np.array([2.0, 4.0], np.float32),
     "B": np.array([4.0, 8.0], np.float32),
@@ -34,7 +36,9 @@ if len(sys.argv) == 3 and sys.argv[1] == "--child":
 def run(path):
     options = ort.SessionOptions()
     options.graph_optimization_level = ort.GraphOptimizationLevel.ORT_DISABLE_ALL
-    session = ort.InferenceSession(str(path), options, providers=["CPUExecutionProvider"])
+    if PROVIDER == "CUDAExecutionProvider":
+        options.add_session_config_entry("session.disable_cpu_ep_fallback", "1")
+    session = ort.InferenceSession(str(path), options, providers=[PROVIDER])
     return session.run(None, FEEDS)[0]
 
 
@@ -65,6 +69,7 @@ reproduced = (
     and "ScaledSum" in control_nodes
 )
 print("onnxruntime", ort.__version__)
+print("provider", PROVIDER)
 print("source", direct_source.tolist())
 print("direct graph input optimizer return code", direct_result.returncode)
 print("Identity control optimizer return code", control_result.returncode)

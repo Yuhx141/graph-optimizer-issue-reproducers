@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 from pathlib import Path
 
 import numpy as np
@@ -9,14 +10,17 @@ import onnxruntime.capi._pybind_state as training
 
 ROOT = Path(__file__).parent
 X = np.array([-2.0, -1.0, 1.0, 2.0], np.float32)
+PROVIDER = os.environ.get("ORT_PROVIDER", "CPUExecutionProvider")
 
 
 def run(model, feeds):
     options = ort.SessionOptions()
     options.graph_optimization_level = ort.GraphOptimizationLevel.ORT_DISABLE_ALL
+    if PROVIDER == "CUDAExecutionProvider":
+        options.add_session_config_entry("session.disable_cpu_ep_fallback", "1")
     try:
         session = ort.InferenceSession(
-            model.SerializeToString(), options, providers=["CPUExecutionProvider"]
+            model.SerializeToString(), options, providers=[PROVIDER]
         )
         return "ok", [value.tolist() for value in session.run(None, feeds)]
     except Exception as exc:
@@ -59,6 +63,7 @@ reproduced = (
 )
 
 print("onnxruntime", ort.__version__)
+print("provider", PROVIDER)
 print("public Q", {"source": public_source, "checker": public_checker, "optimized": public_runtime})
 print("shared zero point", {"source": shared_source, "optimized": (shared_status, shared_optimized)})
 print("REPRODUCED" if reproduced else "NOT REPRODUCED")
