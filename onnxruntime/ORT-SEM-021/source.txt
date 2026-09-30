@@ -1,0 +1,11 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 13]
+>
+"matmul-scale-double" (double[2,2] A, double[2,2] B) => (double[2,2] Y) 
+   <double C =  {1}>
+{
+   M = MatMul (A, B)
+   T = Mul (M, C)
+   Y = Neg (T)
+}
