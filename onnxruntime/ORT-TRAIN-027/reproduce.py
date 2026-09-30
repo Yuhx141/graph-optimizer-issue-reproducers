@@ -50,11 +50,13 @@ direct_source = run(direct)
 control_source = run(control)
 direct_result = optimize(direct)
 control_result = optimize(control)
+control_optimized_path = control.with_suffix(".optimized.onnx")
 control_nodes = (
-    [node.op_type for node in onnx.load(control.with_suffix(".optimized.onnx")).graph.node]
+    [node.op_type for node in onnx.load(control_optimized_path).graph.node]
     if control_result.returncode == 0
     else []
 )
+control_optimized_path.unlink(missing_ok=True)
 
 reproduced = (
     np.array_equal(direct_source, control_source)
