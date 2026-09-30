@@ -1,0 +1,11 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 13]
+>
+"expand-zero-target" (float[1] X) => (float[?] Y) 
+   <int64[1] shape =  {0}>
+{
+   R = Relu (X)
+   E = Expand (R, shape)
+   Y = Neg (E)
+}
