@@ -11,3 +11,12 @@ python reproduce.py
 ```
 
 The scripts are intentionally independent of the private research harness.
+
+## CPU / Relax optimizer reports (2026-10-11)
+
+- [ONNX Runtime CPU contracts](onnxruntime/cpu-optimizer-contracts-20261011): six reports, eight representatives.
+- [TVM Relax optimizer contracts](tvm/relax-optimizer-contracts-20261011): five pass-specific reports.
+
+These batches use a shared independent driver, fixed model/input fixtures or
+explicit source builders, neighboring controls and SHA-256 manifests. See each
+batch README for its environment and selection command.

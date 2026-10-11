@@ -1,0 +1,12 @@
+<
+   ir_version: 10,
+   opset_import: ["" : 16, "ai.onnx.ml" : 5, "ai.onnx.training" : 1, "ai.onnx.preview.training" : 1, "com.microsoft" : 1, "test" : 1000, "com.microsoft.experimental" : 1, "com.microsoft.nchwc" : 1, "org.pytorch.aten" : 1, "ai.onnx.preview" : 1]
+>
+test (float16[2,2,2,2] X, float16[2,3,2,2] Grid) => (float16[2,2,3,2] Y)
+   <float16[2,2,3,2] Y, float16[2,3,2,2] internal_value_safe_0, float[2,2,2,2] internal_value_safe_1, float[2,2,3,2] internal_value_safe_2>
+{
+   [InsertedPrecisionFreeCast_Grid] InsertedPrecisionFreeCast_Grid = Cast <to: int = 1> (Grid)
+   [InsertedPrecisionFreeCast_X] internal_value_safe_1 = Cast <to: int = 1> (X)
+   [node1] internal_value_safe_2 = GridSample <align_corners: int = 1, padding_mode: string = "zeros", mode: string = "bicubic"> (internal_value_safe_1, InsertedPrecisionFreeCast_Grid)
+   [InsertedPrecisionFreeCast_Y] Y = Cast <to: int = 10> (internal_value_safe_2)
+}

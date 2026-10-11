@@ -1,0 +1,13 @@
+<
+   ir_version: 10,
+   opset_import: ["com.microsoft" : 1, "" : 13, "ai.onnx.ml" : 5, "ai.onnx.training" : 1, "ai.onnx.preview.training" : 1, "com.microsoft.experimental" : 1, "com.microsoft.nchwc" : 1, "org.pytorch.aten" : 1],
+   producer_name: "onnx.utils.extract_model"
+>
+"Extracted from {TransformerTester}" (uint8[1,32,33] qdq_s8_to_u8_quant_token_1) => (float[1,32,33] node_token_23)
+   <float[1] constant_token_34 =  {0.0035}, uint8[1] qdq_s8_to_u8_zp_conversion_token_0 = ..., uint8[1] qdq_s8_to_u8_zp_conversion_token_2 = ..., uint8[1,32,33] qdq_s8_to_u8_quant_token_1, float[1,32,33] node_token_13, float[1,32,33] node_token_20, uint8[1,32,33] qdq_s8_to_u8_quant_token_3, float[1,32,33] node_token_23>
+{
+   [node_token_19] node_token_13 = DequantizeLinear <axis: int = 0> (qdq_s8_to_u8_quant_token_1, constant_token_34, qdq_s8_to_u8_zp_conversion_token_0)
+   [node_token_21] node_token_20 = AveragePool <kernel_shape: ints = [3], pads: ints = [1, 1], auto_pad: string = "NOTSET", ceil_mode: int = 0, count_include_pad: int = 0> (node_token_13)
+   [node_token_26] qdq_s8_to_u8_quant_token_3 = QuantizeLinear <axis: int = 0> (node_token_20, constant_token_34, qdq_s8_to_u8_zp_conversion_token_2)
+   [node_token_29] node_token_23 = DequantizeLinear <axis: int = 0> (qdq_s8_to_u8_quant_token_3, constant_token_34, qdq_s8_to_u8_zp_conversion_token_2)
+}

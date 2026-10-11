@@ -1,0 +1,14 @@
+<
+   ir_version: 10,
+   opset_import: ["com.microsoft" : 1, "" : 12, "ai.onnx.ml" : 5, "ai.onnx.training" : 1, "ai.onnx.preview.training" : 1, "com.microsoft.experimental" : 1, "com.microsoft.nchwc" : 1, "org.pytorch.aten" : 1]
+>
+TransformerTester (float[0,__ra_dim_e40b8e7a5d,37] input) => (float[0,__ra_dim_e40b8e7a5d,37] output_token_0)
+   <float constant =  {0.105}, uint8 constant_token_1 = ..., float constant_token_2 =  {0.105}, uint8 constant_token_3 = ..., float constant_token_8 =  {0.00390625}, uint8 constant_token_9 = ..., float constant_token_11 =  {0.00390625}, uint8 constant_token_12 = ..., uint8[0,__ra_dim_e40b8e7a5d,37] node, float[0,__ra_dim_e40b8e7a5d,37] "output/duplicated", float[0,__ra_dim_e40b8e7a5d,37] node_token_5, uint8[0,__ra_dim_e40b8e7a5d,37] node_token_7, float[0,__ra_dim_e40b8e7a5d,37] output_token_0, float[0,__ra_dim_e40b8e7a5d,37] output>
+{
+   [node] node = QuantizeLinear (input, constant, constant_token_1)
+   ["node_token_4/duplicated"] "output/duplicated" = DequantizeLinear (node, constant_token_2, constant_token_3)
+   [node_token_6] node_token_5 = Softmax <axis: int = -1> ("output/duplicated")
+   [node_token_10] node_token_7 = QuantizeLinear (node_token_5, constant_token_8, constant_token_9)
+   [node_token_13] output_token_0 = DequantizeLinear (node_token_7, constant_token_11, constant_token_12)
+   [node_token_4] output = DequantizeLinear (node, constant_token_2, constant_token_3)
+}

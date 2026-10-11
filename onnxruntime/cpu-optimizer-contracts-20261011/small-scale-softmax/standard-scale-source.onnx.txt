@@ -1,0 +1,12 @@
+<
+   ir_version: 8,
+   opset_import: ["" : 12]
+>
+scalar_quantized_softmax (uint8[1,2] x) => (float[1,2] y)
+   <float sx =  {0.105}, uint8 zx = ..., float sy =  {0.00390625}, uint8 zy = ..., float dy =  {0.00390625}>
+{
+   a = DequantizeLinear (x, sx, zx)
+   b = Softmax <axis: int = 1> (a)
+   c = QuantizeLinear (b, sy, zy)
+   y = DequantizeLinear (c, dy, zy)
+}

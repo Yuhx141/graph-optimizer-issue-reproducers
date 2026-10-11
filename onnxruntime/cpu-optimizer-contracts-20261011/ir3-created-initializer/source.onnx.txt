@@ -1,0 +1,9 @@
+<
+   ir_version: 3,
+   opset_import: ["" : 9]
+>
+"ir3-fold" (float[1] a, float[1] b) => (float[1] y)
+   <float[1] a =  {1}, float[1] b =  {2}>
+{
+   y = Add (a, b)
+}

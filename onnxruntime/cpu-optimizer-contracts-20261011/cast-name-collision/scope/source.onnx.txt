@@ -1,0 +1,81 @@
+<
+   ir_version: 8,
+   opset_import: ["pkg.onnxscript.torch_lib" : 1, "" : 18, "pkg.onnxscript.torch_lib.common" : 1, "ai.onnx.ml" : 5, "ai.onnx.training" : 1, "ai.onnx.preview.training" : 1, "com.microsoft" : 1, "com.microsoft.experimental" : 1, "com.microsoft.nchwc" : 1, "org.pytorch.aten" : 1],
+   producer_name: "pytorch",
+   producer_version: "2.2.0"
+>
+main_graph (float16 input_0, float _inlfunc__aten_linalg_vector_norm_no_dim_onnx_ord) => (float16 _val_3)
+   <int64[1] _val_1 =  {-1}, int64 _inlfunc__aten_linalg_vector_norm_no_dim_onnx_int64_0_25 =  {0}, float16[1] _val_2, int64[1] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_tmp, int64 _inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_rank, bool _inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_26, bool _inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_5, float16[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_2, float16[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_3, float16[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_24, float16[] _val_3>
+{
+   [Reshape_1] _val_2 = Reshape <allowzero: int = 0> (input_0, _val_1)
+   [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n0] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_tmp = Shape <start: int = 0> (_val_2)
+   [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n1] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_rank = Size (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_tmp)
+   [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n13] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_26 = Equal (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_rank, _inlfunc__aten_linalg_vector_norm_no_dim_onnx_int64_0_25)
+   [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n9] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_5 = IsInf <detect_positive: int = 1, detect_negative: int = 0> (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_ord)
+   [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n5] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_2 = If (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_26) <else_branch: graph = elseGraph_4 () => (float16[1] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_1) {
+      [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n0] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_1 = Identity (_val_2)
+   }, then_branch: graph = thenGraph_4 () => (float16[1,1] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_0)
+      <int64[1] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_int64_0_1d =  {0}>
+{
+      [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n1] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_0 = Unsqueeze (_val_2, _inlfunc__aten_linalg_vector_norm_no_dim_onnx_int64_0_1d)
+   }>
+   [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n6] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_3 = Abs (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_2)
+   [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n10] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_24 = If (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_5) <else_branch: graph = elseGraph_9 () => (float16[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_23)
+      <bool _inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_6>
+{
+      [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n0] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_6 = IsInf <detect_positive: int = 0, detect_negative: int = 1> (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_ord)
+      [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n1] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_23 = If (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_6) <else_branch: graph = elseGraph_11 () => (float16[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_22)
+         <float _inlfunc__aten_linalg_vector_norm_no_dim_onnx_const =  {0}, bool _inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_8>
+{
+         [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n2] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_8 = Equal (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_ord, _inlfunc__aten_linalg_vector_norm_no_dim_onnx_const)
+         [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n3] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_22 = If (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_8) <else_branch: graph = elseGraph_13 () => (float16[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_21)
+            <float _inlfunc__aten_linalg_vector_norm_no_dim_onnx_const_10 =  {1}, bool _inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_11>
+{
+            [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n2] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_11 = Equal (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_ord, _inlfunc__aten_linalg_vector_norm_no_dim_onnx_const_10)
+            [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n3] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_21 = If (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_11) <else_branch: graph = elseGraph_18 () => (float16[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_20)
+               <float _inlfunc__aten_linalg_vector_norm_no_dim_onnx_const_13 =  {2}, bool _inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_14>
+{
+               [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n2] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_14 = Equal (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_ord, _inlfunc__aten_linalg_vector_norm_no_dim_onnx_const_13)
+               [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n3] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_20 = If (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_14) <else_branch: graph = elseGraph_20 () => (float16[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_19)
+                  <float _inlfunc__aten_linalg_vector_norm_no_dim_onnx_const_17 =  {1}, float16 _inlfunc__aten_linalg_vector_norm_no_dim_onnx_const_17_cast, float16 _inlfunc__aten_linalg_vector_norm_no_dim_onnx_ord_float, float16 _inlfunc__aten_linalg_vector_norm_no_dim_onnx_tmp_18, float16[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_pow, float16[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_tmp_16>
+{
+                  [""] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_const_17_cast = Cast <to: int = 10> (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_const_17)
+                  [""] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_ord_float = Cast <to: int = 10> (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_ord)
+                  [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n5] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_tmp_18 = Div (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_const_17_cast, _inlfunc__aten_linalg_vector_norm_no_dim_onnx_ord_float)
+                  [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n1] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_pow = Pow (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_3, _inlfunc__aten_linalg_vector_norm_no_dim_onnx_ord_float)
+                  [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n2] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_tmp_16 = ReduceSum <noop_with_empty_axes: int = 0, keepdims: int = 0> (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_pow)
+                  [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n6] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_19 = Pow (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_tmp_16, _inlfunc__aten_linalg_vector_norm_no_dim_onnx_tmp_18)
+               }, then_branch: graph = thenGraph_20 () => (float16[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_15)
+                  <float16[] _inlfunc_ReduceL2_data_square, float16[] _inlfunc_ReduceL2_sum_square, float[] _inlfunc_ReduceL2_sum_square_dbl, float[] _inlfunc_ReduceL2_sqrt>
+{
+                  [""] _inlfunc_ReduceL2_data_square = Mul (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_3, _inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_3)
+                  [""] _inlfunc_ReduceL2_sum_square = ReduceSum <noop_with_empty_axes: int = 0, keepdims: int = 0> (_inlfunc_ReduceL2_data_square, "")
+                  [""] _inlfunc_ReduceL2_sum_square_dbl = Cast <to: int = 1> (_inlfunc_ReduceL2_sum_square)
+                  [""] _inlfunc_ReduceL2_sqrt = Sqrt (_inlfunc_ReduceL2_sum_square_dbl)
+                  [""] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_15 = Cast <to: int = 10> (_inlfunc_ReduceL2_sqrt)
+               }>
+            }, then_branch: graph = thenGraph_18 () => (float16[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_12)
+               <float16[] _inlfunc_ReduceL1_data_abs>
+{
+               [""] _inlfunc_ReduceL1_data_abs = Abs (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_3)
+               [""] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_12 = ReduceSum <noop_with_empty_axes: int = 0, keepdims: int = 0> (_inlfunc_ReduceL1_data_abs, "")
+            }>
+         }, then_branch: graph = thenGraph_13 () => (float16[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_9)
+            <bool[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_bool, float16[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_0_1>
+{
+            [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n0] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_bool = Cast <to: int = 9> (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_3)
+            [""] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_0_1 = Cast <to: int = 10> (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_bool)
+            [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n2] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_9 = ReduceSum <noop_with_empty_axes: int = 0, keepdims: int = 0> (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_0_1)
+         }>
+      }, then_branch: graph = thenGraph_11 () => (float16[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_7) {
+         [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n0] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_7 = ReduceMin <noop_with_empty_axes: int = 0, keepdims: int = 0> (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_3)
+      }>
+   }, then_branch: graph = thenGraph_9 () => (float16[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result) {
+      [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n0] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result = ReduceMax <noop_with_empty_axes: int = 0, keepdims: int = 0> (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_self_3)
+   }>
+   [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n14] _val_3 = If (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_cond_26) <else_branch: graph = elseGraph_27 () => (float16[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_28) {
+      [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n0] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_28 = Identity (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_24)
+   }, then_branch: graph = thenGraph_27 () => (float16[] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_27) {
+      [_inlfunc__aten_linalg_vector_norm_no_dim_onnx_n0] _inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_27 = Squeeze (_inlfunc__aten_linalg_vector_norm_no_dim_onnx_result_24)
+   }>
+}
